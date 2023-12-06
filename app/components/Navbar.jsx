@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Logo from "./Logo";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { GrLanguage } from "react-icons/gr";
 import { AiOutlineAppstore } from "react-icons/ai";
@@ -15,6 +15,7 @@ export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [openNav, setOpenNav] = useState(false);
   const pathname = usePathname();
+  const navRef = useRef(null);
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -33,24 +34,38 @@ export default function Navbar() {
     }
   }, [darkMode]);
 
+  useEffect(() => {
+    const closeNavOnOutsideClick = (event) => {
+      if (openNav && navRef.current && !navRef.current.contains(event.target)) {
+        setOpenNav(false);
+      }
+    };
+
+    document.body.addEventListener("click", closeNavOnOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("click", closeNavOnOutsideClick);
+    };
+  }, [openNav]);
+
   return (
-    <div className="bg-white dark:bg-gray-950 border-b-[1px] border-black relative z-50">
-      <div className="container flex justify-around items-center z-50">
+    <div ref={navRef} className="bg-white dark:bg-gray-950 border-b-[1px] border-black relative z-50">
+      <div className="container flex md:justify-around justify-between items-center z-50">
         <Logo />
         {!openNav ? (
           <AiOutlineAppstore
-          onClick={()=>setOpenNav(true)}  
-          className="text-gray-950 cursor-pointer dark:text-white md:hidden"
+            onClick={() => setOpenNav(true)}
+            className="text-gray-950 cursor-pointer dark:text-white md:hidden"
             size={34}
           />
         ) : (
           <MdOutlineClose
-          onClick={()=>setOpenNav(false)}
-          className="text-gray-950 cursor-pointer dark:text-white md:hidden"
+            onClick={() => setOpenNav(false)}
+            className="text-gray-950 cursor-pointer dark:text-white md:hidden"
             size={34}
           />
         )}
-        <div className={`resNav ${openNav && 'open'}`}>
+        <nav className={`resNav ${openNav && "open"}`}>
           <div className="nav">
             <Link
               href="/"
@@ -107,9 +122,9 @@ export default function Navbar() {
               />
             </div>
           </div>
-        </div>
+        </nav>
         <div className="text-gray-950 dark:text-white items-center gap-4 md:flex hidden">
-          <div className="flex items-center gap-3 capitalize">
+          <div className="flex items-center gap-3 capitalize hover:text-secondary cursor-pointer">
             <p>{lang}</p>
             <GrLanguage size={24} />
           </div>

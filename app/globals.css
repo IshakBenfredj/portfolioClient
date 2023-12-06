@@ -10,6 +10,9 @@
 body.ar {
   font-family: "Tajawal", sans-serif;
 }
+body {
+  height: 100vh;
+}
 
 @media (max-width: 767px) {
   .resNav {
@@ -25,6 +28,7 @@ body.ar {
     transition: transform .1s ease-in;
     z-index: 45;
     border-bottom: 1px solid black;
+    left: 0;
   }
   .resNav.open {
     transform: translateY(0);

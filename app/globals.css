@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -25,9 +24,8 @@ body {
     width: 100%;
     transform: translateY(-100%);
     overflow: hidden;
-    transition: transform .1s ease-in;
+    transition: transform 0.1s ease-in;
     z-index: 45;
-    border-bottom: 1px solid black;
     left: 0;
   }
   .resNav.open {
@@ -37,10 +35,13 @@ body {
 }
 
 @layer components {
+  ::selection {
+    @apply text-secondary bg-gray-800
+  }
   .nav {
-    @apply flex justify-center items-center md:gap-6 gap-12 text-gray-950 dark:text-white
+    @apply flex justify-center items-center md:gap-6 gap-12 text-gray-950 dark:text-white;
   }
   .resNav {
-    @apply dark:bg-gray-950 bg-white rounded-bl-lg rounded-br-lg 
+    @apply dark:bg-gray-950 bg-white md:dark:bg-transparent md:bg-transparent rounded-bl-lg rounded-br-lg;
   }
 }

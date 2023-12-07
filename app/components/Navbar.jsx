@@ -5,34 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { GrLanguage } from "react-icons/gr";
 import { AiOutlineAppstore } from "react-icons/ai";
-import { MdOutlineClose, MdSunny } from "react-icons/md";
-import { IoMdMoon } from "react-icons/io";
+import { MdOutlineClose } from "react-icons/md";
 import { GoHome } from "react-icons/go";
 import { IoBookOutline, IoMailUnreadOutline } from "react-icons/io5";
+import Theme from "./Theme";
 
 export default function Navbar() {
   const [lang, setLang] = useState("ar");
-  const [darkMode, setDarkMode] = useState(false);
   const [openNav, setOpenNav] = useState(false);
   const pathname = usePathname();
   const navRef = useRef(null);
-
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (!theme) {
-      setDarkMode(true);
-    } else if (theme === "dark") setDarkMode(true);
-  }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
 
   useEffect(() => {
     const closeNavOnOutsideClick = (event) => {
@@ -49,7 +31,10 @@ export default function Navbar() {
   }, [openNav]);
 
   return (
-    <div ref={navRef} className="bg-white dark:bg-gray-950 border-b-[1px] border-black relative z-50">
+    <div
+      ref={navRef}
+      className="z-50 fixed right-0 left-0"
+    >
       <div className="container flex md:justify-around justify-between items-center z-50">
         <Logo />
         {!openNav ? (
@@ -69,7 +54,7 @@ export default function Navbar() {
           <div className="nav">
             <Link
               href="/"
-              className={`px-2 py-1 rounded-lg transition-all ${
+              className={`px-2 py-1 rounded-lg font-semibold transition-all ${
                 pathname === "/"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
@@ -80,7 +65,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/lessons"
-              className={`px-2 py-1 rounded-lg transition-all ${
+              className={`px-2 py-1 rounded-lg font-semibold transition-all ${
                 pathname === "/lessons"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
@@ -91,7 +76,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/contact"
-              className={`px-2 py-1 rounded-lg transition-all ${
+              className={`px-2 py-1 rounded-lg font-semibold transition-all ${
                 pathname === "/contact"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
@@ -109,18 +94,7 @@ export default function Navbar() {
               <p>{lang}</p>
               <GrLanguage size={24} />
             </div>
-            <div className="cursor-pointer hover:text-secondary ">
-              <MdSunny
-                size={24}
-                className={`hidden dark:inline`}
-                onClick={() => setDarkMode(false)}
-              />
-              <IoMdMoon
-                size={24}
-                className={`inline dark:hidden`}
-                onClick={() => setDarkMode(true)}
-              />
-            </div>
+            <Theme />
           </div>
         </nav>
         <div className="text-gray-950 dark:text-white items-center gap-4 md:flex hidden">
@@ -128,18 +102,7 @@ export default function Navbar() {
             <p>{lang}</p>
             <GrLanguage size={24} />
           </div>
-          <div>
-            <MdSunny
-              size={24}
-              className={`cursor-pointer hidden dark:inline hover:text-secondary`}
-              onClick={() => setDarkMode(false)}
-            />
-            <IoMdMoon
-              size={24}
-              className={`cursor-pointer inline dark:hidden hover:text-secondary`}
-              onClick={() => setDarkMode(true)}
-            />
-          </div>
+          <Theme />
         </div>
       </div>
     </div>

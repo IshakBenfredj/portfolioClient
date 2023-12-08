@@ -15,11 +15,29 @@ export default function Navbar() {
   const [openNav, setOpenNav] = useState(false);
   const pathname = usePathname();
   const navRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const closeNavOnOutsideClick = (event) => {
       if (openNav && navRef.current && !navRef.current.contains(event.target)) {
-        closeNavFunc()
+        closeNavFunc();
       }
     };
 
@@ -31,21 +49,18 @@ export default function Navbar() {
   }, [openNav]);
 
   const openNavFunc = () => {
-    setOpenNav(true)
-    document.body.classList.add('openNav')
-  }
+    setOpenNav(true);
+    document.body.classList.add("openNav");
+  };
   const closeNavFunc = () => {
     if (openNav) {
-      setOpenNav(false)
-      document.body.classList.remove('openNav')
+      setOpenNav(false);
+      document.body.classList.remove("openNav");
     }
-  }
+  };
 
   return (
-    <div
-      ref={navRef}
-      className="z-50 fixed right-0 left-0"
-    >
+    <div ref={navRef} className={`z-50 fixed right-0 left-0 ${scrolled && ' backdrop-blur'}`}>
       <div className="container flex md:justify-around justify-between items-center z-50">
         <Logo />
         {!openNav ? (

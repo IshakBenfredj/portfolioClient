@@ -5,13 +5,12 @@
 
 * {
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 body.ar {
   font-family: "Tajawal", sans-serif;
 }
-body {
-  height: 100vh;
-}
+
 body.openNav::before {
   content: "";
   position: absolute;
@@ -58,12 +57,15 @@ body.openNav::before {
   .flexCenter {
     @apply flex items-center justify-center;
   }
+  .section {
+    @apply bg-[#fafafa] py-16 relative overflow-hidden bg-gradient-to-r dark:from-gray-800 dark:to-gray-950 w-full;
+  }
   .fillBtn {
     @apply p-3 bg-primary md:w-1/2 w-full text-white rounded-full capitalize
-     flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary/80
+     flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary/80;
   }
   .outlineBtn {
     @apply p-3 text-primary md:w-1/2 w-full rounded-full capitalize
-     flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary hover:text-white
+     flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary hover:text-white;
   }
 }

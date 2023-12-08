@@ -7,7 +7,7 @@ import {
 
 export default function Landing() {
   return (
-    <div className="bg-[#fafafa] pt-[52px] relative overflow-hidden bg-gradient-to-r dark:from-gray-800 dark:to-gray-950 w-full h-screen">
+    <div className="section pt-[52px] pb-0 h-screen">
       <img
         src="/landingBg.png"
         className="object-cover absolute z-10 right-0 top-[52px] w-2/3 md:w-fit md:h-full h-1/2 select-none opacity-70 dark:opacity-100"
@@ -42,9 +42,9 @@ export default function Landing() {
             <span>contact</span>
           </Link>
         </div>
-        <Link href="" className="fixed bottom-5 w-full flexCenter left-0 text-gray-800 dark:text-gray-300 animate-bounce md:text-5xl text-4xl">
+        <a href="#about" className="absolute bottom-7 w-full flexCenter left-0 text-gray-800 dark:text-gray-300 animate-bounce md:text-5xl text-4xl">
           <MdKeyboardDoubleArrowDown />
-        </Link>
+        </a>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export default function Navbar() {
   useEffect(() => {
     const closeNavOnOutsideClick = (event) => {
       if (openNav && navRef.current && !navRef.current.contains(event.target)) {
-        setOpenNav(false);
+        closeNavFunc()
       }
     };
 
@@ -30,6 +30,17 @@ export default function Navbar() {
     };
   }, [openNav]);
 
+  const openNavFunc = () => {
+    setOpenNav(true)
+    document.body.classList.add('openNav')
+  }
+  const closeNavFunc = () => {
+    if (openNav) {
+      setOpenNav(false)
+      document.body.classList.remove('openNav')
+    }
+  }
+
   return (
     <div
       ref={navRef}
@@ -39,13 +50,13 @@ export default function Navbar() {
         <Logo />
         {!openNav ? (
           <AiOutlineAppstore
-            onClick={() => setOpenNav(true)}
+            onClick={openNavFunc}
             className="text-gray-950 cursor-pointer dark:text-white md:hidden"
             size={34}
           />
         ) : (
           <MdOutlineClose
-            onClick={() => setOpenNav(false)}
+            onClick={closeNavFunc}
             className="text-gray-950 cursor-pointer dark:text-white md:hidden"
             size={34}
           />
@@ -54,6 +65,7 @@ export default function Navbar() {
           <div className="nav">
             <Link
               href="/"
+              onClick={closeNavFunc}
               className={`px-2 py-1 rounded-lg font-semibold transition-all ${
                 pathname === "/"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
@@ -65,6 +77,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/lessons"
+              onClick={closeNavFunc}
               className={`px-2 py-1 rounded-lg font-semibold transition-all ${
                 pathname === "/lessons"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
@@ -76,6 +89,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/contact"
+              onClick={closeNavFunc}
               className={`px-2 py-1 rounded-lg font-semibold transition-all ${
                 pathname === "/contact"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
@@ -86,15 +100,15 @@ export default function Navbar() {
                 className="md:hidden mx-auto mb-2"
                 size={24}
               />
-              Contact Me
+              Contact
             </Link>
           </div>
           <div className="md:hidden nav">
             <div className="flex items-center gap-3 capitalize hover:text-secondary cursor-pointer">
               <p>{lang}</p>
-              <GrLanguage size={24} />
+              <GrLanguage size={24} onClick={closeNavFunc} />
             </div>
-            <Theme />
+            <Theme closeNavFunc={closeNavFunc} />
           </div>
         </nav>
         <div className="text-gray-950 dark:text-white items-center gap-4 md:flex hidden">

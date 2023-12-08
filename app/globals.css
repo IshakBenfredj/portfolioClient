@@ -12,6 +12,17 @@ body.ar {
 body {
   height: 100vh;
 }
+body.openNav::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(3px);
+  z-index: 45;
+}
 
 @media (max-width: 767px) {
   .resNav {
@@ -36,12 +47,21 @@ body {
 
 @layer components {
   ::selection {
-    @apply text-secondary bg-gray-800
+    @apply text-secondary bg-gray-800;
   }
   .nav {
     @apply flex justify-center items-center md:gap-6 gap-12 text-gray-950 dark:text-white;
   }
   .resNav {
-    @apply dark:bg-gray-950 bg-white md:dark:bg-transparent md:bg-transparent rounded-bl-lg rounded-br-lg;
+    @apply dark:bg-gray-950 bg-[#fafafa] md:dark:bg-transparent md:bg-transparent rounded-bl-lg rounded-br-lg;
+  }
+  .flexCenter {
+    @apply flex items-center justify-center;
+  }
+  .fillBtn {
+    @apply p-3 bg-primary md:w-1/2 w-full text-white rounded-full capitalize flexCenter gap-3 font-semibold border-[1px] border-primary;
+  }
+  .outlineBtn {
+    @apply p-3 text-primary md:w-1/2 w-full rounded-full capitalize flexCenter gap-3 font-semibold border-[1px] border-primary;
   }
 }

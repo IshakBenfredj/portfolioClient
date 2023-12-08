@@ -42,11 +42,9 @@ export default function Landing() {
             <span>contact</span>
           </Link>
         </div>
-        <a href="">
-          <MdKeyboardDoubleArrowDown
-            className="mx-auto text-gray-800 dark:text-gray-300 animate-bounce md:text-5xl text-4xl"
-          />
-        </a>
+        <Link href="" className="fixed bottom-5 w-full flexCenter left-0 text-gray-800 dark:text-gray-300 animate-bounce md:text-5xl text-4xl">
+          <MdKeyboardDoubleArrowDown />
+        </Link>
       </div>
     </div>
   );

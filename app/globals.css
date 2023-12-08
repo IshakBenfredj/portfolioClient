@@ -59,9 +59,11 @@ body.openNav::before {
     @apply flex items-center justify-center;
   }
   .fillBtn {
-    @apply p-3 bg-primary md:w-1/2 w-full text-white rounded-full capitalize flexCenter gap-3 font-semibold border-[1px] border-primary;
+    @apply p-3 bg-primary md:w-1/2 w-full text-white rounded-full capitalize
+     flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary/80
   }
   .outlineBtn {
-    @apply p-3 text-primary md:w-1/2 w-full rounded-full capitalize flexCenter gap-3 font-semibold border-[1px] border-primary;
+    @apply p-3 text-primary md:w-1/2 w-full rounded-full capitalize
+     flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary hover:text-white
   }
 }

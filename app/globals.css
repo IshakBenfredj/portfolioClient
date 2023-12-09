@@ -11,6 +11,12 @@ body.ar {
   font-family: "Tajawal", sans-serif;
 }
 
+body {
+  position: relative;
+}
+body.openNav {
+  overflow: hidden; 
+}
 body.openNav::before {
   content: "";
   position: absolute;
@@ -19,6 +25,7 @@ body.openNav::before {
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   backdrop-filter: blur(3px);
   z-index: 45;
 }
@@ -42,6 +49,10 @@ body.openNav::before {
     transform: translateY(0);
     top: 100%;
   }
+}
+
+.cardBoxShadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 @layer components {

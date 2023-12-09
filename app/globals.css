@@ -58,7 +58,7 @@ body.openNav::before {
     @apply flex items-center justify-center;
   }
   .section {
-    @apply bg-[#fafafa] py-16 relative overflow-hidden bg-gradient-to-r dark:from-gray-800 dark:to-gray-950 w-full;
+    @apply bg-[#fafafa] md:py-16 py-6 relative overflow-hidden bg-gradient-to-r dark:from-gray-800 dark:to-gray-950 w-full;
   }
   .fillBtn {
     @apply p-3 bg-primary md:w-1/2 w-full text-white rounded-full capitalize

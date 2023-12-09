@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Title({ title, description }) {
   return (
-    <div className="text-center mx-auto md:w-[500px] w-full mb-8">
+    <div className="text-center mx-auto md:w-[500px] w-full mb-16">
       <h4 className="uppercase md:text-2xl text-xl font-extrabold text-primary">
         {title}
       </h4>

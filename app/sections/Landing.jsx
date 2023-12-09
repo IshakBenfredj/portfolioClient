@@ -23,7 +23,7 @@ export default function Landing() {
         <h1 className="md:text-3xl text-lg font-bold text-secondary capitalize md:my-6 my-3">
           Web & Mobile Developer, Content creator
         </h1>
-        <p className="md:w-3/5 md:font-semibold mx-auto text-gray-800 dark:text-gray-300 leading-7 md:leading-9 capitalize">
+        <p className="md:w-3/5 md:font-semibold mx-auto text-gray-800 dark:text-gray-200 leading-7 md:leading-9 capitalize">
           Your destination for{" "}
           <span className="text-primary">developing your program</span> with{" "}
           <span className="text-primary">modern technologies </span>
@@ -42,7 +42,7 @@ export default function Landing() {
             <span>contact</span>
           </Link>
         </div>
-        <a href="#about" className="absolute bottom-7 w-full flexCenter left-0 text-gray-800 dark:text-gray-300 animate-bounce md:text-5xl text-4xl">
+        <a href="#about" className="absolute bottom-7 w-full flexCenter left-0 text-gray-800 dark:text-gray-200 animate-bounce md:text-5xl text-4xl">
           <MdKeyboardDoubleArrowDown />
         </a>
       </div>

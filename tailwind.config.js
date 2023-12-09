@@ -11,7 +11,7 @@ module.exports = {
       center: true,
       padding: {
         DEFAULT: '10px',
-        md: '0',
+        md: '50px',
       },
     },
     extend: {

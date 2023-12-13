@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Title from "../components/Title";
 import Axios from "../api";
+import Loading from "../components/Loading";
 
 export default function Skills() {
   const [skills, setSkills] = useState([]);
@@ -20,7 +21,7 @@ export default function Skills() {
   return (
     <div className="section bg-gray-100 dark:from-gray-950 dark:to-gray-950 relative">
       <p 
-      className="absolute -bottom-20 left-0 text-[200px] font-bold md:block hidden uppercase select-none z-0 text-primary opacity-50">
+      className="absolute -bottom-20 left-0 text-[200px] font-bold md:block hidden uppercase select-none z-0 text-primary opacity-50 text-nowrap">
         {hoverSkill}
       </p>
       <div className="container">
@@ -29,9 +30,7 @@ export default function Skills() {
           description={"i work hard to improve my skills regularly"}
         />
         {loading ? (
-          <p className="md:text-3xl text-lg text-secondary font-bold capitalize text-center">
-            {loading}
-          </p>
+          <Loading text={loading} />
         ) : (
           <div className="grid lg:grid-cols-7 md:grid-cols-4 grid-cols-2 justify-center gap-3 flex-wrap relative z-30">
             {skills.map((skill) => (

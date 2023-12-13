@@ -14,18 +14,24 @@ export default function Portfolio() {
   useEffect(() => {
     const getPortfolio = async () => {
       const { data } = await Axios.get("/portfolio");
-      setPortfolio(data);
+      setPortfolio(data.reverse());
       setLoading(null);
     };
     getPortfolio();
   }, []);
 
   useEffect(() => {
-    portfolio.reverse().forEach((project) => {
-      if (!types.includes(project.type)) {
-        setTypes([...types, project.type]);
-      }
-    });
+    const getUniqueProjectTypes = () => {
+      const typesSet = new Set();
+    
+      portfolio.forEach((project) => {
+        typesSet.add(project.type);
+      });
+    
+      return Array.from(typesSet);
+    };
+    const types = getUniqueProjectTypes()
+    setTypes(types)
   }, [portfolio]);
   return (
     <div className="section bg-gray-100 dark:from-gray-950 dark:to-gray-950 relative">

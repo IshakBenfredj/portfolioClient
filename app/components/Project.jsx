@@ -10,7 +10,7 @@ export default function Project({ project }) {
         <img src={project.image} alt="" className="w-full" />
       </div>
       <div className="flex justify-between items-center capitalize my-3">
-        <h2 className="font-bold text-primary lg:text-base text-xs">
+        <h2 className="font-bold text-primary lg:text-base text-xs" style={{textWrap: 'no-wrap'}}>
           {project.title}
         </h2>
         <div className="flexCenter gap-1 text-secondary cursor-pointer lg:text-xs text-[10px]">

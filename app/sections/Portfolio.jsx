@@ -4,81 +4,98 @@ import Title from "../components/Title";
 import Loading from "../components/Loading";
 import Axios from "../api";
 import Project from "../components/Project";
+import ProjectDetails from "../components/ProjectDetails";
 
 export default function Portfolio() {
   const [portfolio, setPortfolio] = useState([]);
   const [activeType, setActiveType] = useState("all");
   const [types, setTypes] = useState([]);
+  const [details, setDetails] = useState("");
   const [loading, setLoading] = useState("wait for portfolio ...");
 
+  const getPortfolio = async () => {
+    const { data } = await Axios.get("/portfolio");
+    setPortfolio(data.reverse());
+    setLoading(null);
+  };
+
   useEffect(() => {
-    const getPortfolio = async () => {
-      const { data } = await Axios.get("/portfolio");
-      setPortfolio(data.reverse());
-      setLoading(null);
-    };
     getPortfolio();
   }, []);
 
   useEffect(() => {
     const getUniqueProjectTypes = () => {
       const typesSet = new Set();
-    
+
       portfolio.forEach((project) => {
         typesSet.add(project.type);
       });
-    
+
       return Array.from(typesSet);
     };
-    const types = getUniqueProjectTypes()
-    setTypes(types)
+    const types = getUniqueProjectTypes();
+    setTypes(types.reverse());
   }, [portfolio]);
+
+  const incViews = async (id) => {
+    await Axios.patch(`/portfolio/incViews/${id}`)
+    getPortfolio()
+  }
+
   return (
-    <div className="section bg-gray-100 dark:from-gray-950 dark:to-gray-950 relative">
-      <div className="container">
-        <Title title={"portfolio"} description={"what i do for my clients ?"} />
-        {loading ? (
-          <Loading text={loading} />
-        ) : (
-          <>
-            <div className="flexCenter md:gap-10 gap-4 mb-10">
-              <span
-                onClick={() => setActiveType("all")}
-                className={`font-bold capitalize md:text-xl cursor-pointer transition-all ${
-                  activeType === "all"
-                    ? "text-primary"
-                    : "hover:text-secondary dark:hover:text-secondary text-gray-800 dark:text-gray-200 "
-                }`}
-              >
-                all
-              </span>
-              {types.map((type) => (
+    <>
+      {details && <ProjectDetails details={details} setDetails={setDetails} />}
+      <div className="section bg-gray-100 dark:from-gray-950 dark:to-gray-950 relative">
+        <div className="container">
+          <Title
+            title={"portfolio"}
+            description={"what i do for my clients ?"}
+          />
+          {loading ? (
+            <Loading text={loading} />
+          ) : (
+            <>
+              <div className="flexCenter md:gap-10 gap-4 mb-10">
                 <span
-                  onClick={() => setActiveType(type)}
+                  onClick={() => setActiveType("all")}
                   className={`font-bold capitalize md:text-xl cursor-pointer transition-all ${
-                    activeType === type
+                    activeType === "all"
                       ? "text-primary"
                       : "hover:text-secondary dark:hover:text-secondary text-gray-800 dark:text-gray-200 "
                   }`}
                 >
-                  {type}
+                  all
                 </span>
-              ))}
-            </div>
-            <div className="grid lg:grid-cols-4 grid-cols-2 lg:justify-around justify-center lg:gap-10 gap-2">
-              {activeType === "all"
-                ? portfolio.map((project) => <Project project={project} />)
-                : portfolio.map((project) => (
-                    <>
-                      {project.type === activeType && (
-                        <Project project={project} />
-                      )}
-                    </>
-                  ))}
-            </div>
-          </>
-        )}
+                {types.map((type) => (
+                  <span
+                    onClick={() => setActiveType(type)}
+                    className={`font-bold capitalize md:text-xl cursor-pointer transition-all ${
+                      activeType === type
+                        ? "text-primary"
+                        : "hover:text-secondary dark:hover:text-secondary text-gray-800 dark:text-gray-200 "
+                    }`}
+                  >
+                    {type}
+                  </span>
+                ))}
+              </div>
+              <div className="grid lg:grid-cols-4 grid-cols-2 lg:justify-around justify-center lg:gap-10 gap-2">
+                {activeType === "all"
+                  ? portfolio.map((project) => (
+                      <Project setDetails={setDetails} project={project} incViews={incViews} />
+                    ))
+                  : portfolio.map((project) => (
+                      <>
+                        {project.type === activeType && (
+                          <Project setDetails={setDetails} project={project} incViews={incViews} />
+                        )}
+                      </>
+                    ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

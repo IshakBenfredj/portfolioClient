@@ -11,6 +11,13 @@ body.ar {
   font-family: "Tajawal", sans-serif;
 }
 
+body.ar pre {
+  font-family: "Tajawal", sans-serif;
+}
+pre {
+  font-family: "Poppins", sans-serif;
+}
+
 body {
   position: relative;
 }
@@ -91,4 +98,33 @@ body.openNav::before {
     @apply p-3 text-primary md:w-1/2 w-full rounded-full capitalize
      flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary hover:text-white;
   }
+  .testimonialImg {
+    @apply md:w-10 w-8 bg-gray-200 dark:bg-gray-800 p-1 rounded-full border-2
+  }
+}
+
+@media (min-width: 900px) {
+  .slick-slide > div {
+    margin: 0 10px;
+  }
+}
+.slick-slide > div {
+  margin: 0 4px;
+}
+.slick-prev:before, .slick-next:before {
+  color: #38BDF8 !important;
+  font-size: 30px !important;
+}
+@media (max-width: 768px) {
+  .slick-prev:before, .slick-next:before {
+    font-size: 25px !important;
+  }
+}
+
+.slick-dots li.slick-active button:before {
+  color: #f250a5 !important;
+}
+.slick-dots li button:before {
+  color: #f250a5 !important;
+  opacity: .5;
 }

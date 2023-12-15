@@ -4,6 +4,7 @@ import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Services from "./sections/Services";
 import Portfolio from "./sections/Portfolio";
+import Testimonials from "./sections/Testimonials";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Skills />
       <Services />
       <Portfolio />
+      <Testimonials />
     </>
   )
 }

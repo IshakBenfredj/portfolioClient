@@ -19,7 +19,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <div className="section bg-gray-100 dark:from-gray-950 dark:to-gray-950 relative">
+    <div className="section2">
       <p 
       className="absolute -bottom-20 left-0 text-[200px] font-bold md:block hidden uppercase select-none z-0 text-primary opacity-50 text-nowrap">
         {hoverSkill}

@@ -25,12 +25,23 @@ export default function About() {
           </div>
           <div className="">
             <p className="leading-8 capitalize md:w-10/12 w-full text-gray-800 dark:text-gray-200">
-              I'm Ishak Djilali Benfredj, I Work As A <span className="text-secondary">software engineer</span> and
-              <span className="text-secondary"> content creator</span> . When you work with me, I will be keen to
-              fulfill your requests. I will try to provide <span className="text-secondary">wonderful additions </span>
-              to your project and help you with <span className="text-secondary">awesome marketing ideas</span> for the
-              success of your business. What are you waiting for?  <Link href={'/contact'} className="text-primary underline">Contact me</Link> to
-              work and you can also <span className="text-secondary">download my CV</span> via the button:
+              I'm Ishak Djilali Benfredj, I Work As A{" "}
+              <span className="text-secondary">software engineer</span> and
+              <span className="text-secondary"> content creator</span> . When
+              you work with me, I will be keen to fulfill your requests. I will
+              try to provide{" "}
+              <span className="text-secondary">wonderful additions </span>
+              to your project and help you with{" "}
+              <span className="text-secondary">
+                awesome marketing ideas
+              </span>{" "}
+              for the success of your business. What are you waiting for?{" "}
+              <Link href={"/contact"} className="text-primary underline">
+                Contact me
+              </Link>{" "}
+              to work and you can also{" "}
+              <span className="text-secondary">download my CV</span> via the
+              button:
             </p>
             <a href="" className="fillBtn md:w-1/3 w-2/3 mx-auto md:mx-0 mt-6">
               <MdOutlineSimCardDownload size={22} />

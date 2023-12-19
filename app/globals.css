@@ -70,7 +70,7 @@ body.openNav::before {
   left: 0;
   background-color: transparent;
   box-shadow: inset 0px 0px 30px 5px #242323;
-  opacity: .7;
+  opacity: 0.7;
   z-index: 40;
 }
 
@@ -90,6 +90,9 @@ body.openNav::before {
   .section {
     @apply bg-[#fafafa] md:py-16 py-6 relative overflow-hidden bg-gradient-to-r dark:from-gray-800 dark:to-gray-950 w-full;
   }
+  .section2 {
+    @apply bg-gray-100 md:py-16 py-6 relative overflow-hidden dark:bg-gray-950 w-full;
+  }
   .fillBtn {
     @apply p-3 bg-primary md:w-1/2 w-full text-white rounded-full capitalize
      flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary/80;
@@ -99,7 +102,7 @@ body.openNav::before {
      flexCenter gap-3 font-semibold border-[1px] border-primary transition-all hover:bg-primary hover:text-white;
   }
   .testimonialImg {
-    @apply md:w-10 w-8 bg-gray-200 dark:bg-gray-800 p-1 rounded-full border-2
+    @apply md:w-10 w-8 bg-gray-200 dark:bg-gray-800 p-1 rounded-full border-2;
   }
 }
 
@@ -111,12 +114,14 @@ body.openNav::before {
 .slick-slide > div {
   margin: 0 4px;
 }
-.slick-prev:before, .slick-next:before {
-  color: #38BDF8 !important;
+.slick-prev:before,
+.slick-next:before {
+  color: #38bdf8 !important;
   font-size: 30px !important;
 }
 @media (max-width: 768px) {
-  .slick-prev:before, .slick-next:before {
+  .slick-prev:before,
+  .slick-next:before {
     font-size: 25px !important;
   }
 }
@@ -126,5 +131,46 @@ body.openNav::before {
 }
 .slick-dots li button:before {
   color: #f250a5 !important;
-  opacity: .5;
+  opacity: 0.5;
+}
+
+
+.cyberpunk-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.cyberpunk-checkbox:before {
+  content: "";
+  background-color: #fff;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.cyberpunk-checkbox:checked:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cyberpunk-checkbox-label {
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
 }

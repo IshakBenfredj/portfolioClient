@@ -45,7 +45,7 @@ export default function Portfolio() {
   return (
     <>
       {details && <ProjectDetails details={details} setDetails={setDetails} />}
-      <div className="section bg-gray-100 dark:from-gray-950 dark:to-gray-950 relative">
+      <div className="section2">
         <div className="container">
           <Title
             title={"portfolio"}

@@ -9,7 +9,8 @@ import Axios from "../api";
 
 export default function ContactComp() {
   const [name, setName] = useState("");
-  const [isWork, setIsWork] = useState("");
+  const [isWork, setIsWork] = useState(false);
+  const [isComment, setIsComment] = useState(false);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -24,7 +25,14 @@ export default function ContactComp() {
         phone,
         message,
       });
-      alert("Message sent successfully");
+      if (isComment) {
+        await Axios.post("/comments/add", { name, email, comment: message });
+        alert("Message & Comment sent successfully");
+      } else alert("Message sent successfully");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
     } catch (error) {
       alert("Server Erreur");
     }
@@ -105,6 +113,14 @@ export default function ContactComp() {
             value={message}
             set={setMessage}
           />
+          <label className="cyberpunk-checkbox-label font-bold capitalize z-30 small">
+            <input
+              type="checkbox"
+              className="cyberpunk-checkbox"
+              onChange={() => setIsComment(!isComment)}
+            />
+            Post the message as a comment as well
+          </label>
           <button className="font-bold bg-white px-4 py-3 md:w-fit rounded-full text-secondary">
             Send
           </button>

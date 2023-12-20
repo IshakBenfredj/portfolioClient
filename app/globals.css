@@ -174,3 +174,15 @@ body.openNav::before {
   display: flex;
   align-items: center;
 }
+.cyberpunk-checkbox-label.small {
+  font-size: 14px;
+}
+
+.cyberpunk-checkbox-label.small .cyberpunk-checkbox{
+  width: 15px;
+  height: 15px;
+}
+.cyberpunk-checkbox-label.small .cyberpunk-checkbox::before{
+  width: 9px;
+  height: 9px;
+}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Title from "../components/Title";
 import Loading from "../components/Loading";
 import Axios from "../api";
-import Project from "../components/Project";
+import Project, { LoadingProjects } from "../components/Project";
 import ProjectDetails from "../components/ProjectDetails";
 
 export default function Portfolio() {
@@ -38,9 +38,9 @@ export default function Portfolio() {
   }, [portfolio]);
 
   const incViews = async (id) => {
-    await Axios.patch(`/portfolio/incViews/${id}`)
-    getPortfolio()
-  }
+    await Axios.patch(`/portfolio/incViews/${id}`);
+    getPortfolio();
+  };
 
   return (
     <>
@@ -52,7 +52,9 @@ export default function Portfolio() {
             description={"what i do for my clients ?"}
           />
           {loading ? (
-            <Loading text={loading} />
+            <div className="grid lg:grid-cols-4 grid-cols-2 lg:justify-around justify-center lg:gap-10 gap-2">
+              <Loading Element={LoadingProjects} arr={[1, 2, 3, 4]} />
+            </div>
           ) : (
             <>
               <div className="flexCenter md:gap-10 gap-4 mb-10">
@@ -82,12 +84,20 @@ export default function Portfolio() {
               <div className="grid lg:grid-cols-4 grid-cols-2 lg:justify-around justify-center lg:gap-10 gap-2">
                 {activeType === "all"
                   ? portfolio.map((project) => (
-                      <Project setDetails={setDetails} project={project} incViews={incViews} />
+                      <Project
+                        setDetails={setDetails}
+                        project={project}
+                        incViews={incViews}
+                      />
                     ))
                   : portfolio.map((project) => (
                       <>
                         {project.type === activeType && (
-                          <Project setDetails={setDetails} project={project} incViews={incViews} />
+                          <Project
+                            setDetails={setDetails}
+                            project={project}
+                            incViews={incViews}
+                          />
                         )}
                       </>
                     ))}

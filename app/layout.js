@@ -1,4 +1,7 @@
+import { Providers } from "./providers";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 import "./globals.css";
 
 export const metadata = {
@@ -8,10 +11,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

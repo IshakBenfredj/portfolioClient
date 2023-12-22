@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Loading({ text, Element }) {
+export default function Loading({ arr, text, Element }) {
   return (
     <>
       {text ? (
@@ -8,11 +6,11 @@ export default function Loading({ text, Element }) {
           {text}
         </div>
       ) : (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-          {[0, 1, 2].map((e) => (
-            <Element key={e} />
+        <>
+          {arr.map((e) => (
+            <Element key={e} keyy={e} />
           ))}
-        </div>
+        </>
       )}
     </>
   );

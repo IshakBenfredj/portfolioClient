@@ -9,7 +9,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { IoMdMail } from "react-icons/io";
 import Link from "next/link";
 
-export default function SocialMedia({ classes, size }) {
+export default function SocialMedia({ classes }) {
   const socialMedia = [
     {
       icon: <FaFacebook />,
@@ -41,7 +41,7 @@ export default function SocialMedia({ classes, size }) {
     },
   ];
   return (
-    <div className={`flex gap-3 dark:text-white text-gray-800 mt-8 ${classes}`}>
+    <div className={`flex gap-3 dark:text-white text-gray-800 ${classes} relative z-30`}>
       {socialMedia.map((item) => (
         <Link key={item.path} target={"_blank"} href={item.path} className="cursor-pointer text-2xl">
           {item.icon}

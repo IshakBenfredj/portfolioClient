@@ -7,7 +7,7 @@ import {
 
 export default function Landing() {
   return (
-    <div className="section pt-[52px] pb-0 h-screen">
+    <div className="section pt-[52px] pb-0">
       <img
         src="/landingBg.png"
         className="object-cover absolute z-10 right-0 top-[52px] w-2/3 md:w-fit md:h-full h-1/2 select-none opacity-70 dark:opacity-100"
@@ -32,7 +32,7 @@ export default function Landing() {
           idea so that it keeps pace with the technological development taking
           place.
         </p>
-        <div className="flexCenter md:flex-row flex-col gap-3 my-6 mx-auto md:w-1/3 w-4/5">
+        <div className="flexCenter md:flex-row flex-col gap-3 my-6 mx-auto md:w-2/3 lg:w-1/3 w-4/5">
           <a href="" className="fillBtn">
             <MdOutlineSimCardDownload size={22} />
             <span>download cv</span>

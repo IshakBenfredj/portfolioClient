@@ -58,11 +58,18 @@ export default function Testimonials() {
           description={"what people say about me?"}
         />
         {loading ? (
-          <Loading text={loading} />
+          <Slider {...settings} className="md:px-4">
+            {[1, 2, 3].map((e) => (
+              <TestimonialsLoading key={e} keyy={e} />
+            ))}
+          </Slider>
         ) : (
           <Slider {...settings} className="md:px-4">
             {testimonials.map((testimonial) => (
-              <div className="bg-gray-200 dark:bg-gray-100 p-2 rounded-xl relative">
+              <div
+                key={testimonial._id}
+                className="bg-gray-200 dark:bg-gray-100 p-2 rounded-xl relative"
+              >
                 <div className="flex items-center gap-2">
                   {testimonial.gender === "male" ? (
                     <img
@@ -96,3 +103,21 @@ export default function Testimonials() {
     </div>
   );
 }
+
+const TestimonialsLoading = ({ keyy }) => {
+  return (
+    <div
+      key={keyy}
+      className="bg-gray-200 dark:bg-gray-100 p-2 rounded-xl relative animate-pulse"
+    >
+      <div className="flex items-center gap-2">
+        <div className="testimonialImg md:h-10 h-8 bg-slate-300 dark:bg-slate-300"></div>
+        <h4 className={`mb-1 h-4 w-2/3 bg-slate-300`}></h4>
+      </div>
+      <p className="mt-2 bg-slate-300 h-3 rounded"></p>
+      <p className="mt-2 bg-slate-300 h-3 rounded"></p>
+      <p className="mt-2 bg-slate-300 h-3 rounded"></p>
+      <p className="mt-2 bg-slate-300 h-3 rounded"></p>
+    </div>
+  );
+};

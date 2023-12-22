@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Title from "../components/Title";
 import Axios from "../api";
-import Service from "../components/Service";
+import Service, { LoadingServices } from "../components/Service";
 import Loading from "../components/Loading";
 
 export default function Services() {
@@ -23,7 +23,7 @@ export default function Services() {
         <Title title={"services"} description={"what i do for my clients ?"} />
         <div className="flexCenter gap-5 flex-wrap">
           {loading ? (
-            <Loading text={loading} />
+            <Loading Element={LoadingServices} arr={[1,2,3]} />
           ) : (
             services.map((service) => <Service service={service} />)
           )}

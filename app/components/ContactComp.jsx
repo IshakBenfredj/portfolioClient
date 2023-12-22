@@ -58,7 +58,7 @@ export default function ContactComp() {
         </Link>
         <Link
           href="tel:0541790205"
-          className="flex items-center mb-3 gap-3 text-gray-800 dark:text-gray-200 relative z-30"
+          className="flex items-center gap-3 text-gray-800 dark:text-gray-200 relative z-30 mb-8"
         >
           <FaPhoneAlt className="text-secondary" />
           05-41-79-02-05

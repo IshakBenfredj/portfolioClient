@@ -47,7 +47,7 @@ export default function Comments() {
         <div className="flexCenter">
           <form
             onSubmit={handleSubmit}
-            className="bg-gray-950 md:w-3/5 w-full mx-auto p-4 flex flex-col gap-3 rounded-xl cardBoxShadow"
+            className="bg-gray-950 md:w-3/5 w-full mx-auto p-4 flex md:mb-0 mb-4 flex-col gap-3 rounded-xl cardBoxShadow"
           >
             <input
               type="text"
@@ -85,7 +85,7 @@ export default function Comments() {
         <AllComments comments={comments} loading={loading} />
         <Link
           href={"/comments"}
-          className="capitalize mt-3 text-white bg-primary px-4 py-3 font-bold block w-fit mx-auto rounded-full"
+          className="capitalize mt-3 text-white bg-primary hover:bg-primary/80 transition-all px-4 py-3 font-bold block w-fit mx-auto rounded-full"
         >
           all comments
         </Link>

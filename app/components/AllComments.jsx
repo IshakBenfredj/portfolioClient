@@ -13,10 +13,15 @@ export default function AllComments({ all, comments, loading }) {
   return (
     <>
       {loading ? (
-        <Loading Element={LoadingComment} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px] mt-8 mb-8">
+          <Loading
+          Element={LoadingComment}
+          arr={[1, 2, 3]}
+        />
+        </div>
       ) : (
         <ResponsiveMasonry
-          columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+          columnsCountBreakPoints={{ 350: 1, 750: 2, 1024: 3 }}
           className="my-5"
         >
           <Masonry gutter="10px">
@@ -58,11 +63,11 @@ export default function AllComments({ all, comments, loading }) {
   );
 }
 
-const LoadingComment = ({ key }) => {
+const LoadingComment = ({ keyy }) => {
   return (
     <div
-      key={key}
-      className="bg-gray-800 dark:bg-gray-100 p-3 rounded-xl w-full h-32 animate-pulse"
+      key={keyy}
+      className="bg-gray-800 dark:bg-gray-100 p-3 rounded-xl h-32 animate-pulse"
     >
       <div className="flex items-center gap-3">
         <div className="dark:bg-slate-200 bg-slate-700 p-2 w-10 h-10 flexCenter rounded-full"></div>

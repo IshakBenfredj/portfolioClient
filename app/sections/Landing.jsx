@@ -7,7 +7,7 @@ import {
 
 export default function Landing() {
   return (
-    <div className="section pt-[52px] pb-0">
+    <div className="section md:pt-[52px] pb-0">
       <img
         src="/landingBg.png"
         className="object-cover absolute z-10 right-0 top-[52px] w-2/3 md:w-fit md:h-full h-1/2 select-none opacity-70 dark:opacity-100"

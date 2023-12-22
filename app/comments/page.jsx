@@ -18,7 +18,7 @@ export default function page() {
     getComments();
   }, []);
   return (
-    <div className="section min-h-screen">
+    <div className="section min-h-screen md:pt-16 pt-20">
       <div className="container">
         <Title title={"Comments"} description={"What people said about us?"} />
         <AllComments all comments={comments} loading={loading} />

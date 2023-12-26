@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Title from "../components/Title";
 import Loading from "../components/Loading";
 import Axios from "../api";
 import Project, { LoadingProjects } from "../components/Project";
 import ProjectDetails from "../components/ProjectDetails";
+import { Lang } from "../providers";
 
 export default function Portfolio() {
   const [portfolio, setPortfolio] = useState([]);
@@ -12,6 +13,7 @@ export default function Portfolio() {
   const [types, setTypes] = useState([]);
   const [details, setDetails] = useState("");
   const [loading, setLoading] = useState("wait for portfolio ...");
+  const { data } = useContext(Lang)
 
   const getPortfolio = async () => {
     const { data } = await Axios.get("/portfolio");
@@ -47,10 +49,10 @@ export default function Portfolio() {
       {details && <ProjectDetails details={details} setDetails={setDetails} />}
       <div className="section2">
         <div className="container">
-          <Title
-            title={"portfolio"}
-            description={"what i do for my clients ?"}
-          />
+        <Title
+          title={data.portfolio.title}
+          description={data.portfolio.subtitle}
+        />
           {loading ? (
             <div className="grid lg:grid-cols-4 grid-cols-2 lg:justify-around justify-center lg:gap-10 gap-2">
               <Loading Element={LoadingProjects} arr={[1, 2, 3, 4]} />

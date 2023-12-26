@@ -1,21 +1,22 @@
 "use client";
 import Link from "next/link";
 import Logo from "./Logo";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { GrLanguage } from "react-icons/gr";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
 import { GoHome } from "react-icons/go";
 import { IoBookOutline, IoMailUnreadOutline } from "react-icons/io5";
 import Theme from "./Theme";
+import Languages from "./Languages";
+import { Lang } from "../providers";
 
 export default function Navbar() {
-  const [lang, setLang] = useState("ar");
   const [openNav, setOpenNav] = useState(false);
   const pathname = usePathname();
   const navRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
+  const { data } = useContext(Lang);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +61,10 @@ export default function Navbar() {
   };
 
   return (
-    <div ref={navRef} className={`z-50 fixed right-0 left-0 ${scrolled && ' backdrop-blur'}`}>
+    <div
+      ref={navRef}
+      className={`z-50 fixed right-0 left-0 ${scrolled && " backdrop-blur"}`}
+    >
       <div className="container flex md:justify-around justify-between items-center z-50">
         <Logo />
         {!openNav ? (
@@ -82,31 +86,31 @@ export default function Navbar() {
               href="/"
               onClick={closeNavFunc}
               className={`px-2 py-1 rounded-lg font-semibold transition-all ${
-                pathname === "/"
+                pathname === "/" || pathname === "/ar"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
               }`}
             >
               <GoHome className="md:hidden mx-auto mb-2" size={24} />
-              Home
+              {data.navbar.home}
             </Link>
             <Link
               href="/lessons"
               onClick={closeNavFunc}
               className={`px-2 py-1 rounded-lg font-semibold transition-all ${
-                pathname === "/lessons"
+                pathname === "/lessons" || pathname === "/ar/lessons"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
               }`}
             >
               <IoBookOutline className="md:hidden mx-auto mb-2" size={24} />
-              Lessons
+              {data.navbar.lessons}
             </Link>
             <Link
               href="/contact"
               onClick={closeNavFunc}
               className={`px-2 py-1 rounded-lg font-semibold transition-all ${
-                pathname === "/contact"
+                pathname === "/contact" || pathname === "/ar/contact"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
               }`}
@@ -115,22 +119,16 @@ export default function Navbar() {
                 className="md:hidden mx-auto mb-2"
                 size={24}
               />
-              Contact
+              {data.navbar.contact}
             </Link>
           </div>
           <div className="md:hidden nav">
-            <div className="flex items-center gap-3 capitalize hover:text-secondary cursor-pointer">
-              <p>{lang}</p>
-              <GrLanguage size={24} onClick={closeNavFunc} />
-            </div>
+            <Languages closeNavFunc={closeNavFunc} />
             <Theme closeNavFunc={closeNavFunc} />
           </div>
         </nav>
         <div className="text-gray-950 dark:text-white items-center gap-4 md:flex hidden">
-          <div className="flex items-center gap-3 capitalize hover:text-secondary cursor-pointer">
-            <p>{lang}</p>
-            <GrLanguage size={24} />
-          </div>
+          <Languages closeNavFunc={closeNavFunc} />
           <Theme />
         </div>
       </div>

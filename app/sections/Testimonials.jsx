@@ -1,15 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Axios from "../api";
 import Slider from "react-slick";
 import Title from "../components/Title";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loading from "../components/Loading";
+import { Lang } from "../providers";
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState("wait for Testimonials ...");
+  const { data } = useContext(Lang);
 
   useEffect(() => {
     const getTestimonials = async () => {
@@ -51,11 +53,11 @@ export default function Testimonials() {
     ],
   };
   return (
-    <div className="section">
+    <div className="section ltr">
       <div className="container px-10 lg:px-28">
         <Title
-          title={"testimonilas"}
-          description={"what people say about me?"}
+          title={data.testimonials.title}
+          description={data.testimonials.subtitle}
         />
         {loading ? (
           <Slider {...settings} className="md:px-4">
@@ -64,7 +66,7 @@ export default function Testimonials() {
             ))}
           </Slider>
         ) : (
-          <Slider {...settings} className="md:px-4">
+          <Slider {...settings} className="md:px-4 ltr">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial._id}

@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Title from "../../components/Title";
-import Axios from "@/app/api";
-import Loading from "@/app/components/Loading";
 import { notFound } from "next/navigation";
+import Axios from "@/app/api";
+import Title from "@/app/components/Title";
 
 export default function page({ params }) {
   const name = decodeURIComponent(params.name);

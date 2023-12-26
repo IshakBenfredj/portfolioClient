@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Title from "../components/Title";
 import Axios from "../api";
 import Link from "next/link";
 import AllComments from "../components/AllComments";
 import Loading from "../components/Loading";
+import { Lang } from "../providers";
 
 export default function Comments() {
   const [name, setName] = useState("");
@@ -12,6 +13,7 @@ export default function Comments() {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { data } = useContext(Lang);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,9 +43,9 @@ export default function Comments() {
     <div className="section">
       <div className="container">
         <Title
-          title={"Comments"}
-          description={"What can you say about our portfolio ?"}
-        />
+          title={data.comments.title}
+          description={data.comments.subtitle}
+        />{" "}
         <div className="flexCenter">
           <form
             onSubmit={handleSubmit}
@@ -51,7 +53,7 @@ export default function Comments() {
           >
             <input
               type="text"
-              placeholder="Full Name *"
+              placeholder={`${data.contact.name} *`}
               value={name}
               className="p-2 w-full rounded-xl bg-white outline-none"
               onChange={(e) => setName(e.target.value)}
@@ -59,7 +61,7 @@ export default function Comments() {
             />
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder={data.contact.email}
               value={email}
               className="p-2 w-full rounded-xl bg-white outline-none"
               onChange={(e) => setEmail(e.target.value)}
@@ -67,27 +69,26 @@ export default function Comments() {
             <textarea
               name="comment"
               id=""
-              placeholder="Your Comment *"
+              placeholder={`${data.comments.comment} *`}
               value={comment}
               className="p-2 w-full rounded-xl h-24 bg-white outline-none"
               onChange={(e) => setComment(e.target.value)}
               required
             ></textarea>
             <button className="px-4 py-3 font-bold rounded-full bg-primary w-fit text-white">
-              Comment
+              {data.comments.comment}
             </button>
           </form>
           <div className="md:block hidden">
             <img src="/comment.png" alt="" className="w-4/5 object-contain" />
           </div>
         </div>
-
         <AllComments comments={comments} loading={loading} />
         <Link
           href={"/comments"}
           className="capitalize mt-3 text-white bg-primary hover:bg-primary/80 transition-all px-4 py-3 font-bold block w-fit mx-auto rounded-full"
         >
-          all comments
+          {data.comments.allComments}
         </Link>
       </div>
     </div>

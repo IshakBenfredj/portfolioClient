@@ -5,7 +5,7 @@ export default function Logo({notRes}) {
   return (
     <Link
       href={"/dashboard"}
-      className="text-gray-950 dark:text-white whitespace-nowrap font-bold tracking-widest p-3 text-center text-xl rounded-md block"
+      className="ltr text-gray-950 dark:text-white whitespace-nowrap font-bold tracking-widest p-3 text-center text-xl rounded-md block"
     >
       <span className="text-primary">&lt;</span>
       <span className={`md:inline ${notRes ? 'inline' : 'hidden'}`}>IshakBenfredj</span>

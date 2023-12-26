@@ -7,13 +7,19 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
-body.ar {
-  font-family: "Tajawal", sans-serif;
-}
 
 body.ar pre {
-  font-family: "Tajawal", sans-serif;
+  font-family: "Tajawal", sans-serif !important;
 }
+body.ar * {
+  font-family: "Tajawal", sans-serif !important;
+  direction: rtl;
+}
+body.ar .ltr,
+body.ar .slick-list {
+  direction: ltr !important;
+}
+
 pre {
   font-family: "Poppins", sans-serif;
   white-space: pre-wrap;
@@ -137,7 +143,6 @@ body.openNav::before {
   opacity: 0.5;
 }
 
-
 .cyberpunk-checkbox {
   appearance: none;
   width: 20px;
@@ -176,16 +181,17 @@ body.openNav::before {
   user-select: none;
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 .cyberpunk-checkbox-label.small {
   font-size: 14px;
 }
 
-.cyberpunk-checkbox-label.small .cyberpunk-checkbox{
+.cyberpunk-checkbox-label.small .cyberpunk-checkbox {
   width: 15px;
   height: 15px;
 }
-.cyberpunk-checkbox-label.small .cyberpunk-checkbox::before{
+.cyberpunk-checkbox-label.small .cyberpunk-checkbox::before {
   width: 9px;
   height: 9px;
 }

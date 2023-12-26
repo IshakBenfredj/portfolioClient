@@ -1,8 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Lang } from "../providers";
 
 export default function InputField({ label, type, id, value, set }) {
   const [isFocus, setIsFocus] = useState(false);
+  const { lang } = useContext(Lang);
+
   return (
     <div className="relative">
       {id === "message" ? (
@@ -29,7 +32,7 @@ export default function InputField({ label, type, id, value, set }) {
         />
       )}
       <label
-        className={`absolute text-white capitalize font-normal pointer-events-none left-4 px-1 transition-all opacity-70  ${
+        className={`absolute text-white capitalize font-normal pointer-events-none ${lang === 'en' ? 'left-4' : 'right-4'} px-1 transition-all opacity-70  ${
           value || isFocus
             ? "-top-[6px] text-[10px] dark:bg-[#2f90bd] bg-primary flex opacity-100"
             : id === "message"

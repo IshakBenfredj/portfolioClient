@@ -1,8 +1,13 @@
+'use client'
 import Link from "next/link";
+import { useContext } from "react";
 import { BsSendPlus } from "react-icons/bs";
 import { FaInfo } from "react-icons/fa";
+import { Lang } from "../providers";
 
 export default function Service({ service }) {
+  const { data } = useContext(Lang)
+
   return (
     <div
       key={service._id}
@@ -24,7 +29,7 @@ export default function Service({ service }) {
           className="flexCenter gap-3 rounded-xl p-3 text-primary border-[1px] border-primary capitalize transition-all hover:text-white hover:bg-primary"
         >
           <BsSendPlus />
-          <span>request</span>
+          <span>{data.services.buying}</span>
         </Link>
         <Link
           href={`/${service.title}/${service._id}`}

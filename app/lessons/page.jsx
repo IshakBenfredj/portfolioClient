@@ -1,15 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Title from "../components/Title";
 import Axios from "../api";
 import { FaEye } from "react-icons/fa";
 import { FiLink } from "react-icons/fi";
 import Link from "next/link";
 import Loading from "../components/Loading";
+import { Lang } from "../providers";
 
 export default function page() {
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { data } = useContext(Lang)
 
   const getLessons = async () => {
     const { data } = await Axios.get("/lessons");
@@ -29,8 +31,8 @@ export default function page() {
     <div className="section">
       <div className="container">
         <Title
-          title={"our lessons"}
-          description={"Our lessons published on social media"}
+          title={data.lessons.title}
+          description={data.lessons.subtitle}
         />
         <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 gap-4">
           {loading ? (

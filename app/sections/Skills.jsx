@@ -1,13 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Title from "../components/Title";
 import Axios from "../api";
 import Loading from "../components/Loading";
+import { Lang } from "../providers";
 
 export default function Skills() {
   const [skills, setSkills] = useState([]);
   const [hoverSkill, setHoverSkill] = useState("");
   const [loading, setLoading] = useState(true);
+  const { data } = useContext(Lang);
 
   useEffect(() => {
     const getSkills = async () => {
@@ -25,8 +27,8 @@ export default function Skills() {
       </p>
       <div className="container">
         <Title
-          title={"skills"}
-          description={"i work hard to improve my skills regularly"}
+          title={data.skills.title}
+          description={data.skills.subtitle}
         />
         <div className="grid lg:grid-cols-7 md:grid-cols-4 grid-cols-2 justify-center gap-3 flex-wrap relative z-30">
           {loading ? (
@@ -61,7 +63,7 @@ export default function Skills() {
 const SkillsLoading = ({ keyy }) => {
   return (
     <div
-    key={keyy}
+      key={keyy}
       className="bg-white/80 dark:bg-gray-800/80 p-4 rounded-xl cardBoxShadow dark:shadow-none animate-pulse"
     >
       <p className="w-2/3 h-3 rounded bg-slate-200 dark:bg-slate-700 mx-auto"></p>

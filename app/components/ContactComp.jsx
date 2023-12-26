@@ -2,10 +2,11 @@
 import { IoIosMail } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import InputField from "./InputField";
 import SocialMedia from "./SocialMedia";
 import Axios from "../api";
+import { Lang } from "../providers";
 
 export default function ContactComp() {
   const [name, setName] = useState("");
@@ -14,6 +15,7 @@ export default function ContactComp() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const { data } = useContext(Lang);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,15 +41,14 @@ export default function ContactComp() {
   };
 
   return (
-    <div className="bg-white/80 dark:bg-gray-800/90 w-full flex justify-center md:flex-row flex-col overflow-hidden rounded-xl">
+    <div className="bg-white/80 cardBoxShadow dark:shadow-none dark:bg-gray-800/90 w-full flex justify-center md:flex-row flex-col overflow-hidden rounded-xl">
       <div className="relative flex-1 p-5 md:pb-5 overflow-hidden pb-10">
         <span className="absolute z-20 w-40 h-40 border-[20px] border-primary rounded-full opacity-50 right-16 -bottom-20"></span>
         <div className="text-primary capitalize font-bold mb-4 md:text-xl text-lg">
-          our social links
+          {data.contact.socialTitle}
         </div>
         <p className="dark:text-gray-200 text-gray-800 font-normal capitalize leading-8 mb-6 =">
-          Here you will find some information about me such as email, phone
-          number, social networking sites, do not forget to follow us.
+          {data.contact.socialSubtitle}
         </p>
         <Link
           href="mailto:ishakbanfradje@gmail.com"
@@ -72,20 +73,20 @@ export default function ContactComp() {
           className="absolute border-[25px] border-transparent md:border-r-primary
          md:dark:border-r-primary/70 md:border-b-transparent md:dark:border-b-transparent border-b-primary dark:border-b-primary/70 md:-left-[50px] left-auto md:top-auto -top-[50px]"
         ></span>
-        <div className="text-white capitalize font-bold mb-4 md:text-xl text-lg">
-          contact me
+        <div className="text-white capitalize font-bold mb-4 md:text-xl text-lg relative z-30">
+          {data.contact.contact}
         </div>
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-          <label className="cyberpunk-checkbox-label font-bold capitalize z-30">
+          {/* <label className="cyberpunk-checkbox-label font-bold capitalize z-30">
             <input
               type="checkbox"
               className="cyberpunk-checkbox"
               onChange={() => setIsWork(!isWork)}
             />
             this message is for work ?
-          </label>
+          </label> */}
           <InputField
-            label="Full Name"
+            label={data.contact.name}
             type="text"
             id="name"
             value={name}
@@ -93,21 +94,21 @@ export default function ContactComp() {
           />
 
           <InputField
-            label="Your Email"
+            label={data.contact.email}
             type="email"
             id="email"
             value={email}
             set={setEmail}
           />
           <InputField
-            label="Your Phone"
+            label={data.contact.phone}
             type="number"
             id="phone"
             value={phone}
             set={setPhone}
           />
           <InputField
-            label="Message"
+            label={data.contact.message}
             type="text"
             id="message"
             value={message}
@@ -119,10 +120,10 @@ export default function ContactComp() {
               className="cyberpunk-checkbox"
               onChange={() => setIsComment(!isComment)}
             />
-            Post the message as a comment as well
+            {data.contact.postComment}
           </label>
           <button className="font-bold bg-white px-4 py-3 md:w-fit rounded-full text-secondary">
-            Send
+            {data.contact.send}
           </button>
         </form>
       </div>

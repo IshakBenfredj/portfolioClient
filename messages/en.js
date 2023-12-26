@@ -3,6 +3,7 @@ const en = {
     home: "Home",
     lessons: "lessons",
     contact: "contact",
+    partnership: "Partnership",
   },
   landing: {
     name: "Hi I'm Ishak Djilali Benfredj",
@@ -77,7 +78,7 @@ const en = {
     subtitle: "What Can You Say About Our Portfolio ?",
     subtitle2: "What People Said About me?",
     comment: "comment",
-    allComments: "allComments",
+    allComments: "all Comments",
   },
   lessons: {
     title: "OUR LESSONS",

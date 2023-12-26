@@ -2,13 +2,23 @@
 import Title from "../components/Title";
 import ContactComp from "../components/ContactComp";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Lang } from "../providers";
+import LoadingPage from "../loading";
 
 export default function page() {
   const { data } = useContext(Lang)
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
   return (
-    <div className="min-h-screen section md:pt-16 pt-20 text-white">
+    <div className="min-h-screen section pt-20 text-white">
       <div className="container">
         <div className="-mb-10">
           <Title

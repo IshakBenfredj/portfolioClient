@@ -4,7 +4,7 @@ import { Lang } from "../providers";
 
 export default function Languages({ closeNavFunc }) {
   const [mounted, setMounted] = useState(true);
-  const { lang, setLang } = useContext(Lang)
+  const { lang, setLang } = useContext(Lang);
 
   useEffect(() => {
     setMounted(false);
@@ -19,7 +19,7 @@ export default function Languages({ closeNavFunc }) {
 
   return (
     <div
-      className="flex items-center gap-2 capitalize hover:text-secondary cursor-pointer"
+      className="flex items-center justify-center gap-2 capitalize hover:text-secondary cursor-pointer"
       onClick={changeLang}
     >
       {!mounted && <p>{lang === "en" ? "ar" : "en"}</p>}

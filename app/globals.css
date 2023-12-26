@@ -88,7 +88,7 @@ body.openNav::before {
     @apply text-secondary bg-gray-800;
   }
   .nav {
-    @apply flex justify-center items-center md:gap-6 gap-12 text-gray-950 dark:text-white;
+    @apply md:flex grid grid-cols-2 justify-center items-center gap-6 text-gray-950 dark:text-white;
   }
   .resNav {
     @apply dark:bg-gray-950 bg-[#fafafa] md:dark:bg-transparent md:bg-transparent rounded-bl-lg rounded-br-lg;

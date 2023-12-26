@@ -7,10 +7,12 @@ import { FiLink } from "react-icons/fi";
 import Link from "next/link";
 import Loading from "../components/Loading";
 import { Lang } from "../providers";
+import LoadingPage from "../loading";
 
 export default function page() {
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingPage, setLoadingPage] = useState(true);
   const { data } = useContext(Lang)
 
   const getLessons = async () => {
@@ -27,8 +29,16 @@ export default function page() {
     await Axios.patch(`/lessons/incViews/${id}`);
     getLessons();
   };
+
+  useEffect(() => {
+    setLoadingPage(false);
+  }, []);
+
+  if (loadingPage) {
+    return <LoadingPage />;
+  }
   return (
-    <div className="section">
+    <div className="section pt-20">
       <div className="container">
         <Title
           title={data.lessons.title}

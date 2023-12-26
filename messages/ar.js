@@ -3,6 +3,7 @@ const ar = {
     home: "الرئيسية",
     lessons: "الدروس",
     contact: "تواصل",
+    partnership: "الشراكة",
   },
   landing: {
     name: "إسحاق جيلالي بن فرج",

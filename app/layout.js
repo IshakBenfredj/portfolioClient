@@ -7,6 +7,9 @@ import "./globals.css";
 export const metadata = {
   title: "Ishak Benfredj",
   description: "Ishak Benfredj Portfolio website",
+  icons : {
+    icon: "/siteIcon1.png",
+  },
 };
 
 export default function RootLayout({ children }) {

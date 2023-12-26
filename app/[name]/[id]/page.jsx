@@ -22,7 +22,7 @@ export default function page({ params }) {
     getServiceById();
   }, []);
   return (
-    <div className="min-h-screen section md:pt-16 pt-20 text-white">
+    <div className="min-h-screen section pt-20 text-white">
       <div className="container lg:w-1/2 mx-auto md:w-2/3 w-full">
         {loading ? (
           <LoadingDetails />

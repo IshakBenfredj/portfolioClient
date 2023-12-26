@@ -10,6 +10,7 @@ import { IoBookOutline, IoMailUnreadOutline } from "react-icons/io5";
 import Theme from "./Theme";
 import Languages from "./Languages";
 import { Lang } from "../providers";
+import { PiHandshakeDuotone } from "react-icons/pi";
 
 export default function Navbar() {
   const [openNav, setOpenNav] = useState(false);
@@ -17,6 +18,7 @@ export default function Navbar() {
   const navRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const { data } = useContext(Lang);
+  const [loadingPage, setLoadingPage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,6 +62,14 @@ export default function Navbar() {
     }
   };
 
+  useEffect(() => {
+    setLoadingPage(false);
+  }, []);
+
+  if (loadingPage) {
+    return <div></div>;
+  }
+
   return (
     <div
       ref={navRef}
@@ -85,8 +95,8 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={closeNavFunc}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all ${
-                pathname === "/" || pathname === "/ar"
+              className={`px-2 py-1 rounded-lg font-semibold transition-all capitalize ${
+                pathname === "/"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
               }`}
@@ -97,8 +107,8 @@ export default function Navbar() {
             <Link
               href="/lessons"
               onClick={closeNavFunc}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all ${
-                pathname === "/lessons" || pathname === "/ar/lessons"
+              className={`px-2 py-1 rounded-lg font-semibold transition-all capitalize ${
+                pathname === "/lessons"
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
               }`}
@@ -109,8 +119,8 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={closeNavFunc}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all ${
-                pathname === "/contact" || pathname === "/ar/contact"
+              className={`px-2 py-1 rounded-lg font-semibold transition-all capitalize ${
+                pathname === "/contact" 
                   ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
                   : "hover:text-secondary"
               }`}
@@ -120,6 +130,21 @@ export default function Navbar() {
                 size={24}
               />
               {data.navbar.contact}
+            </Link>
+            <Link
+              href="/partnership"
+              onClick={closeNavFunc}
+              className={`px-2 py-1 rounded-lg font-semibold transition-all capitalize ${
+                pathname === "/partnership"
+                  ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
+                  : "hover:text-secondary"
+              }`}
+            >
+              <PiHandshakeDuotone
+                className="md:hidden mx-auto mb-2"
+                size={24}
+              />
+              {data.navbar.partnership}
             </Link>
           </div>
           <div className="md:hidden nav">

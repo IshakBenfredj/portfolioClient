@@ -18,7 +18,6 @@ export default function Navbar() {
   const navRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const { data } = useContext(Lang);
-  const [loadingPage, setLoadingPage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,14 +60,6 @@ export default function Navbar() {
       document.body.classList.remove("openNav");
     }
   };
-
-  useEffect(() => {
-    setLoadingPage(false);
-  }, []);
-
-  if (loadingPage) {
-    return <div></div>;
-  }
 
   return (
     <div

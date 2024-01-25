@@ -122,21 +122,6 @@ export default function Navbar() {
               />
               {data.navbar.contact}
             </Link>
-            <Link
-              href="/partnership"
-              onClick={closeNavFunc}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all capitalize ${
-                pathname === "/partnership"
-                  ? "text-gray-100 dark:text-gray-900 bg-gray-950 dark:bg-white font-semibold"
-                  : "hover:text-secondary"
-              }`}
-            >
-              <PiHandshakeDuotone
-                className="md:hidden mx-auto mb-2"
-                size={24}
-              />
-              {data.navbar.partnership}
-            </Link>
           </div>
           <div className="md:hidden nav">
             <Languages closeNavFunc={closeNavFunc} />

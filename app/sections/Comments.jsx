@@ -55,7 +55,7 @@ export default function Comments() {
               type="text"
               placeholder={`${data.contact.name} *`}
               value={name}
-              className="p-2 w-full rounded-xl bg-white outline-none"
+              className="p-2 w-full rounded-xl bg-white outline-none text-gray-800"
               onChange={(e) => setName(e.target.value)}
               required
             />
@@ -63,7 +63,7 @@ export default function Comments() {
               type="email"
               placeholder={data.contact.email}
               value={email}
-              className="p-2 w-full rounded-xl bg-white outline-none"
+              className="p-2 w-full rounded-xl bg-white outline-none text-gray-800"
               onChange={(e) => setEmail(e.target.value)}
             />
             <textarea
@@ -71,7 +71,7 @@ export default function Comments() {
               id=""
               placeholder={`${data.comments.comment} *`}
               value={comment}
-              className="p-2 w-full rounded-xl h-24 bg-white outline-none"
+              className="p-2 w-full rounded-xl h-24 bg-white outline-none text-gray-800"
               onChange={(e) => setComment(e.target.value)}
               required
             ></textarea>

@@ -9,11 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "@react-pdf/renderer": "^3.3.6",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.2",
     "next": "13.5.5",
     "next-themes": "^0.2.1",
+    "pdfjs-dist": "^3.11.174",
     "prop-types": "^15.8.1",
+    "raw-loader": "^4.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
@@ -25,6 +30,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10",
+    "file-loader": "^6.2.0",
     "postcss": "^8",
     "tailwindcss": "^3"
   }

@@ -28,8 +28,9 @@ export default function ContactComp() {
         message,
       });
       if (isComment) {
-        await Axios.post("/comments/add", { name, email, comment: message });
+        const { data } = await Axios.post("/comments/add", { name, email, comment: message });
         alert("Message & Comment sent successfully");
+        localStorage.setItem(`${data._id}`,`${data._id}`)
       } else alert("Message sent successfully");
       setName("");
       setEmail("");

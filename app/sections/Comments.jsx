@@ -4,7 +4,6 @@ import Title from "../components/Title";
 import Axios from "../api";
 import Link from "next/link";
 import AllComments from "../components/AllComments";
-import Loading from "../components/Loading";
 import { Lang } from "../providers";
 
 export default function Comments() {
@@ -18,7 +17,8 @@ export default function Comments() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await Axios.post("/comments/add", { name, email, comment });
+      const { data } = await Axios.post("/comments/add", { name, email, comment });
+      localStorage.setItem(`${data._id}`,`${data._id}`)
       getComments();
       setName("");
       setEmail("");
@@ -29,12 +29,12 @@ export default function Comments() {
     }
   };
 
+  
   const getComments = async (e) => {
     const { data } = await Axios.get("/comments");
     setComments(data.reverse());
     setLoading(false);
   };
-
   useEffect(() => {
     getComments();
   }, []);
@@ -83,7 +83,7 @@ export default function Comments() {
             <img src="/comment.png" alt="" className="w-4/5 object-contain" />
           </div>
         </div>
-        <AllComments comments={comments} loading={loading} />
+        <AllComments getComments={getComments} comments={comments} loading={loading} />
         <Link
           href={"/comments"}
           className="capitalize mt-3 text-white bg-primary hover:bg-primary/80 transition-all px-4 py-3 font-bold block w-fit mx-auto rounded-full"

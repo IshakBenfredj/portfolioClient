@@ -3,9 +3,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Loading from "./Loading";
+import { MdDelete } from "react-icons/md";
+import Axios from "../api";
 
-export default function AllComments({ all, comments, loading }) {
+export default function AllComments({ all, comments, loading,getComments }) {
   const [length, setLength] = useState(10);
+
+  const handleDelete = async (id) => {
+    await Axios.delete(`/comments/delete/${id}`)
+    getComments()
+    alert('comment deleted successfully')
+  }
 
   useEffect(() => {
     all && setLength(comments.length);
@@ -14,10 +22,7 @@ export default function AllComments({ all, comments, loading }) {
     <>
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px] mt-8 mb-8">
-          <Loading
-          Element={LoadingComment}
-          arr={[1, 2, 3]}
-        />
+          <Loading Element={LoadingComment} arr={[1, 2, 3]} />
         </div>
       ) : (
         <ResponsiveMasonry
@@ -30,26 +35,35 @@ export default function AllComments({ all, comments, loading }) {
                 key={comment._id}
                 className="bg-gray-800 dark:bg-gray-100 p-3 rounded-xl"
               >
-                <div className="flex items-center gap-3">
-                  {/* Avatar */}
-                  <div className="bg-primary uppercase text-white p-2 w-10 h-10 text-lg flexCenter rounded-full font-bold">
-                    {comment.name.split(" ")[1]
-                      ? `${comment.name.split(" ")[0].slice(0, 1)}${comment.name
-                          .split(" ")[1]
-                          .slice(0, 1)}`
-                      : comment.name.slice(0, 2)}
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    {/* Avatar */}
+                    <div className="bg-primary uppercase text-white p-2 w-10 h-10 text-lg flexCenter rounded-full font-bold">
+                      {comment.name.split(" ")[1]
+                        ? `${comment.name
+                            .split(" ")[0]
+                            .slice(0, 1)}${comment.name
+                            .split(" ")[1]
+                            .slice(0, 1)}`
+                        : comment.name.slice(0, 2)}
+                    </div>
+                    <div className="flex flex-col">
+                      <h3 className="capitalize font-semibold dark:text-gray-800 text-gray-200">
+                        {comment.name}
+                      </h3>
+                      <Link
+                        href={`mailto:${comment.email}`}
+                        className="text-sm text-gray-200 dark:text-gray-600"
+                      >
+                        {comment.email}
+                      </Link>
+                    </div>
                   </div>
-                  <div className="flex flex-col">
-                    <h3 className="capitalize font-semibold dark:text-gray-800 text-gray-200">
-                      {comment.name}
-                    </h3>
-                    <Link
-                      href={`mailto:${comment.email}`}
-                      className="text-sm text-gray-200 dark:text-gray-600"
-                    >
-                      {comment.email}
-                    </Link>
-                  </div>
+                  {localStorage.getItem(`${comment._id}`) && (
+                    <div className="bg-red-600 cursor-pointer p-2 rounded-lg" onClick={()=> handleDelete(comment._id)}>
+                      <MdDelete size={24} />
+                    </div>
+                  )}
                 </div>
                 <p className="mt-3 dark:text-gray-900 text-gray-200">
                   {comment.comment}

@@ -36,7 +36,7 @@ export default function Landing() {
           {data.landing.about4}
         </p>
         <div className="flexCenter md:flex-row flex-col gap-3 my-6 mx-auto md:w-2/3 lg:w-1/3 w-4/5">
-          <a href="" className="fillBtn">
+          <a href="/DJILALI BENFREDJ ISHAK CV.pdf" download={'DJILALI_BENFREDJ_ISHAK_CV.pdf'} className="fillBtn">
             <MdOutlineSimCardDownload size={22} />
             <span>{data.landing.dowCv}</span>
           </a>

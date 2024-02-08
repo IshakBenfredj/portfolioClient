@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { FiLink, FiInfo } from "react-icons/fi";
 import { FaEye } from "react-icons/fa6";
+import { Lang } from "../providers";
+import { useContext } from "react";
 
 export default function Project({ project, setDetails, incViews }) {
+  const { data } = useContext(Lang)
+
   return (
     <div
       key={project._id}
@@ -28,18 +32,18 @@ export default function Project({ project, setDetails, incViews }) {
         <Link
           target="_blank"
           href={project.link}
-          className="flexCenter gap-1 hover:text-primary hover:underline"
+          className="flexCenter gap-1 hover:text-primary hover:underline capitalize"
           onClick={() => incViews(project._id)}
         >
           <FiLink />
-          <span>browse</span>
+          <span>{data.portfolio.browse}</span>
         </Link>
         <div
-          className="flexCenter gap-1 hover:text-secondary cursor-pointer"
+          className="flexCenter gap-1 hover:text-secondary cursor-pointer capitalize"
           onClick={() => setDetails(project.details)}
         >
           <FiInfo />
-          <span>details</span>
+          <span>{data.portfolio.details}</span>
         </div>
       </div>
     </div>

@@ -46,6 +46,9 @@ const en = {
   portfolio: {
     title: "portfolio",
     subtitle: "What I Do For My Clients ?",
+    browse: "browse",
+    details: "details",
+    all: "all",
   },
   testimonials: {
     title: "testimonials",

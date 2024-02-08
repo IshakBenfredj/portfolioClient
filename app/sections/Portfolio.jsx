@@ -68,7 +68,7 @@ export default function Portfolio() {
                       : "hover:text-secondary dark:hover:text-secondary text-gray-800 dark:text-gray-200 "
                   }`}
                 >
-                  all
+                  {data.portfolio.all}
                 </span>
                 {types.map((type) => (
                   <span

@@ -44,6 +44,9 @@ const ar = {
   portfolio: {
     title: "معرض الأعمال",
     subtitle: "ماذا أقدم لعملائي؟",
+    browse: "تصفح",
+    details: "التفاصيل",
+    all: "الكل",
   },
   testimonials: {
     title: "التوصيات",

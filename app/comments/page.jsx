@@ -26,9 +26,9 @@ export default function page() {
     setLoadingPage(false);
   }, []);
 
-  if (loadingPage) {
-    return <LoadingPage />;
-  }
+  // if (loadingPage) {
+  //   return <LoadingPage />;
+  // }
   return (
     <div className="section min-h-screen pt-20">
       <div className="container">

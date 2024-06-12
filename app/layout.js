@@ -8,7 +8,7 @@ export const metadata = {
   title: "Ishak Benfredj",
   description: "Ishak Benfredj Portfolio website",
   icons : {
-    icon: "/siteIcon1.png",
+    icon: "/logo/logo_res_dark.png",
   },
 };
 

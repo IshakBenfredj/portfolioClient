@@ -83,6 +83,24 @@ body.openNav::before {
   z-index: 40;
 }
 
+/* @media (max-width: 768px) {
+  .logo-regular {
+    display: none;
+  }
+  .logo-responsive {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .logo-regular {
+    display: block;
+  }
+  .logo-responsive {
+    display: none;
+  }
+} */
+
 @layer components {
   ::selection {
     @apply text-secondary bg-gray-800;

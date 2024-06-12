@@ -34,9 +34,9 @@ export default function page() {
     setLoadingPage(false);
   }, []);
 
-  if (loadingPage) {
-    return <LoadingPage />;
-  }
+  // if (loadingPage) {
+  //   return <LoadingPage />;
+  // }
   return (
     <div className="section pt-20">
       <div className="container">

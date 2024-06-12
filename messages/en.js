@@ -66,7 +66,8 @@ const en = {
     note6: "Our Terms Of Work, ",
     note7: "Thank You.",
     socialTitle: "Our Social Links",
-    socialSubtitle: "Here You Will Find Some Information About Me Such As Email, Phone Number, Social Networking Sites, Do Not Forget To Follow Us.",
+    socialSubtitle:
+      "Here You Will Find Some Information About Me Such As Email, Phone Number, Social Networking Sites, Do Not Forget To Follow Us.",
     contact: "contact me",
     name: "full Name",
     email: "your email",
@@ -87,6 +88,7 @@ const en = {
     subtitle: "Our Lessons Published On Social Media",
   },
   rights: "All Rights Are Reserved",
+  termsTitle: "Our Terms Of Work",
 };
 
 export default en;

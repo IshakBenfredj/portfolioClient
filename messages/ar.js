@@ -86,6 +86,7 @@ const ar = {
     subtitle: "دروسنا المنشورة عبر مواقع التواصل الاجتماعي",
   },
   rights: "جميع الحقوق محفوظة",
+  termsTitle: "شروط العمل",
 };
 
 export default ar;

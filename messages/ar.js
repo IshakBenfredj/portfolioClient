@@ -40,6 +40,7 @@ const ar = {
     title: "الخدمات",
     subtitle: "ماذا أقدم لعملائي؟",
     buying: "شراء",
+    detailsTitle : 'كل ما تريد معرفته عن هذه الخدمة'
   },
   portfolio: {
     title: "معرض الأعمال",

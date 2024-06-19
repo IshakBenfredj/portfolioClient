@@ -3,8 +3,8 @@ import { GrLanguage } from "react-icons/gr";
 import { Lang } from "../providers";
 
 export default function Languages({ closeNavFunc }) {
-  const [mounted, setMounted] = useState(true);
-  const { lang, setLang } = useContext(Lang);
+  // const [mounted, setMounted] = useState(true);
+  const { lang, setLang,mounted, setMounted } = useContext(Lang);
 
   useEffect(() => {
     setMounted(false);

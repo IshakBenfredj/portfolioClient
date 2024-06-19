@@ -42,6 +42,7 @@ const en = {
     title: "SERVICES",
     subtitle: "What I Do For My Clients ?",
     buying: "buying",
+    detailsTitle : 'Everything You Want To Know About This Service'
   },
   portfolio: {
     title: "portfolio",

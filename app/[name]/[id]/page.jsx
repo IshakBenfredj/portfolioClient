@@ -1,13 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import Axios from "@/app/api";
 import Title from "@/app/components/Title";
+import { Lang } from "@/app/providers";
 
 export default function page({ params }) {
   const name = decodeURIComponent(params.name);
   const [service, setService] = useState();
   const [loading, setLoading] = useState(true);
+  const { data } = useContext(Lang)
 
   useEffect(() => {
     const getServiceById = async () => {
@@ -30,7 +32,7 @@ export default function page({ params }) {
           <>
             <Title
               title={name}
-              description={"Everything you want to know about this service"}
+              description={data.services.detailsTitle}
             />
             <pre dangerouslySetInnerHTML={{ __html: service.details }}></pre>
           </>

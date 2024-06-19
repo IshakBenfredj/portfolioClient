@@ -9,6 +9,7 @@ export const Lang = createContext();
 export function Providers({ children }) {
   const [lang, setLang] = useState("");
   const [data, setData] = useState(en);
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     if (
@@ -26,7 +27,9 @@ export function Providers({ children }) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <Lang.Provider value={{ lang, setLang, data }}>{children}</Lang.Provider>
+      <Lang.Provider value={{ lang, setLang, data, mounted, setMounted }}>
+        {children}
+      </Lang.Provider>
     </ThemeProvider>
   );
 }

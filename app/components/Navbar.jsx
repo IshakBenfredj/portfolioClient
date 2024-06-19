@@ -17,7 +17,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const navRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
-  const { data } = useContext(Lang);
+  const { data,mounted } = useContext(Lang);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +64,7 @@ export default function Navbar() {
   return (
     <div
       ref={navRef}
-      className={`z-50 fixed right-0 left-0 ${scrolled && " backdrop-blur"}`}
+      className={`z-50 fixed right-0 left-0 ${scrolled && " backdrop-blur"} ${mounted ? 'hidden' : 'block'}`}
     >
       <div className="container flex md:justify-around justify-between items-center z-50">
         <Logo />
